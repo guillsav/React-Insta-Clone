@@ -5,7 +5,7 @@ import logoType from '../../assets/instagram-logo.png';
 const LoginDiv = styled.div`
   width: 640px;
   height: 460px;
-  margin: 380px auto;
+  margin: 200px auto;
   border: 1px solid #dbdbdb;
   border-radius: 3px;
   background: #fff;
