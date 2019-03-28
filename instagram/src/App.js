@@ -1,11 +1,16 @@
 import React, {Component} from 'react';
-import './App.css';
 import moment from 'moment';
+import styled from 'styled-components';
 
 import dummyData from './dummy-data';
 import withAuthenticate from './authentification/withAuthenticate';
 import PostPage from './components/PostPage';
 import LoginPage from './components/login/Login';
+
+const AppWrapper = styled.div`
+  width: 100%;
+  margin: 0 auto;
+`;
 
 const ComponentFromWithAuthenticate = withAuthenticate(PostPage)(LoginPage);
 
@@ -77,13 +82,13 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <AppWrapper>
         <ComponentFromWithAuthenticate
           state={this.state}
           onChange={this.onInputChange}
           onSubmit={this.handleAddComment}
         />
-      </div>
+      </AppWrapper>
     );
   }
 }

@@ -101,6 +101,7 @@ const MainNav = styled.nav`
 const NavButton = styled.button`
   border: 0;
   background: transparent;
+  outline: none;
 
   ${props =>
     props.color === 'log-out'
