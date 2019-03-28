@@ -1,13 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import Comment from './Comment';
 import CommentInput from './CommentInput';
 
+const CommentsDiv = styled.div`
+  min-width: 80%;
+  margin: 0 20px;
+  color: #262626;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: -10px;
+  border-bottom: 1px solid #bfbfbf46;
+`;
+
 const CommentSection = props => {
   return (
     <div>
-      <div className="comments">
+      <CommentsDiv>
         {props.comments.map(comment => {
           return (
             <Comment
@@ -18,7 +29,7 @@ const CommentSection = props => {
             />
           );
         })}
-      </div>
+      </CommentsDiv>
       <CommentInput
         onChange={props.onChange}
         onSubmit={props.onSubmit}

@@ -1,5 +1,4 @@
 import React from 'react';
-import './Postcontainer.css';
 import styled from 'styled-components';
 
 import CommentSection from './CommentSection';

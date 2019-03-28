@@ -1,5 +1,4 @@
 import React from 'react';
-import './Header.css';
 import logoMark from '../assets/glyph-logo_May2016.png';
 import logoType from '../assets/instagram-logo.png';
 import glass from '../assets/magnifiying-glass.png';
@@ -71,6 +70,8 @@ const Loupe = styled.img`
   margin-left: 70px;
   margin-top: 9px;
   z-index: 2;
+
+  ${props => (props.className === 'hide' ? 'display : none' : null)}
 `;
 
 const Input = styled.input`
