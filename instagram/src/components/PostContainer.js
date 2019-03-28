@@ -41,7 +41,7 @@ class PostContainer extends React.Component {
             <img src={this.props.img} alt="" />
           </div>
           <div className="ui-controls">
-            <button onClick={this.onButtonClick}>
+            <button onClick={() => setTimeout(() => this.onButtonClick(), 300)}>
               <img
                 src={`${
                   this.props.likes === this.state.likes ? heart : heart_on

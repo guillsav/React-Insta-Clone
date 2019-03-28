@@ -41,7 +41,7 @@
   justify-content: space-between;
   align-items: center;
   height: 50px;
-  width: 140px;
+  width: 130px;
   padding: 10px 10px;
   margin-bottom: -18px;
   /* margin: 20px 10px; */
@@ -59,11 +59,12 @@
 }
 
 .post .ui-controls .comment {
-  width: 24px;
+  width: 22px;
 }
 
 .post .ui-controls .send {
   width: 19px;
+  margin: 5px;
 }
 
 .post .likes {

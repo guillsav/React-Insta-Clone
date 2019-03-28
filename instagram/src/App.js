@@ -20,7 +20,7 @@ export default class App extends Component {
       username: '',
       password: '',
       user: 'guillaume',
-      pass: 'password'
+      pass: '123'
     };
   }
 
@@ -30,6 +30,11 @@ export default class App extends Component {
         dummyData,
         filteredData: Array.from(dummyData)
       });
+      const comments = this.state.filteredData.map(data => data.comments);
+      const commentsToJSON = JSON.stringify(comments);
+      if (comments) {
+        localStorage.setItem('comments', commentsToJSON);
+      }
     }, 2500);
   }
 
@@ -57,16 +62,17 @@ export default class App extends Component {
         .startOf('hour')
         .fromNow()
     };
-
-    this.setState({
-      filteredData: this.state.filteredData.map(data => {
-        if (data.id === id) {
-          return {...data, comments: [...data.comments, newComment]};
-        }
-        return data;
-      }),
-      text: ''
-    });
+    setTimeout(() => {
+      this.setState({
+        filteredData: this.state.filteredData.map(data => {
+          if (data.id === id) {
+            return {...data, comments: [...data.comments, newComment]};
+          }
+          return data;
+        }),
+        text: ''
+      });
+    }, 600);
   };
 
   render() {

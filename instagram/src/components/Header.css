@@ -1,61 +1,55 @@
-header {
-  width: 100%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.098);
-  background: #fff;
-}
-
 .container {
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 .main-header {
-  width: 1010px;
+  /* width: 1010px;
   height: 77px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 26px;
+  padding: 20px 26px; */
 }
 
-.main-header .logo {
-  display: flex;
+MainHeaderContainer .logo {
+  /* display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: center; */
 }
 
 .logo .logo-mark {
-  width: 24px;
-  height: 24px;
+  /* width: 24px;
+  height: 24px; */
 }
 
 .logo .logo-type {
-  width: 103px;
+  /* width: 103px;
   height: 29px;
-  margin-top: 7px;
+  margin-top: 7px; */
 }
 
 .logo .divider {
-  width: 1px;
+  /* width: 1px;
   height: 28px;
   margin: 0 16px;
-  border: 0.5px solid #262626;
+  border: 0.5px solid #262626; */
 }
 
-.main-header form {
-  width: 215px;
+MainHeaderContainer form {
+  /* width: 215px;
   height: 28px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 
-.main-header .search {
-  width: 100%;
-  height: 100%;
+MainHeaderContainer .search {
+  /* width: 100%;
+  height: 100%; */
 }
 
-.main-header form input {
-  width: 100%;
+MainHeaderContainer form input {
+  /* width: 100%;
   height: 100%;
   border-radius: 3px;
   border: 1px solid #dbdbdb;
@@ -64,72 +58,71 @@ header {
   color: #999;
   font-size: 14px;
   font-weight: 400;
-  outline: none;
+  outline: none; */
 }
 
-.main-header form input::placeholder {
+/* MainHeaderContainer form input::placeholder {
   opacity: 0.8;
-  /* padding-left: 9px; */
-}
+  padding-left: 9px; */
+/* } */
 
-.main-header form .glass {
-  height: 10px;
+/* MainHeaderContainer form .glass { */
+/* height: 10px;
   width: 10px;
   opacity: 0.5;
-  background-image: url('../assets/magnifiying-glass.png');
   background-repeat: no-repeat;
   position: absolute;
   margin-left: 70px;
   margin-top: 9px;
-  z-index: 2;
-}
+  z-index: 2; */
+/* } */
 
-.main-header .main-nav {
-  width: 20%;
+MainHeaderContainer .main-nav {
+  /* width: 20%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-right: 1%;
+  margin-right: 1%; */
 }
 
-.main-header .main-nav .discover {
+/* MainHeaderContainer .main-nav .discover {
   border: 0;
   background: transparent;
 }
 
-.main-header .main-nav .likes {
+MainHeaderContainer .main-nav .likes {
   border: 0;
   background: transparent;
 }
 
-.main-header .main-nav .profile {
+MainHeaderContainer.main-nav .profile {
   border: 0;
   background: transparent;
 }
 
-.main-header .main-nav .discover img {
+MainHeaderContainer .main-nav .discover img {
   cursor: pointer;
   width: 23px;
   height: 23px;
 }
 
-.main-header .main-nav .likes img {
+MainHeaderContainer .main-nav .likes img {
   cursor: pointer;
   width: 24px;
   height: 24px;
 }
 
-.main-header .main-nav .profile img {
+MainHeaderContainer .main-nav .profile img {
   cursor: pointer;
   width: 22px;
   height: 22px;
-}
+} */
 
-.main-header .main-nav button {
+MainHeaderContainer .main-nav button {
   outline: none;
 }
 
-.main-header .main-nav .log-out {
+MainHeaderContainer .main-nav .log-out {
   background: #3897f0;
   color: #fff;
   font-weight: 600;
@@ -138,13 +131,13 @@ header {
   border-radius: 4px;
   width: 80px;
   height: 30px;
-  margin-left: 10px;
+  margin-left: 20px;
   outline: none;
   cursor: pointer;
   transition: all 0.3s;
 }
 
-.main-header .main-nav .log-out:hover {
+MainHeaderContainer .main-nav .log-out:hover {
   opacity: 0.9;
 }
 

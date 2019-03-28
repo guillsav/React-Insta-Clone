@@ -27,7 +27,7 @@ class LoginPage extends React.Component {
           <input
             onChange={this.props.onChange}
             required
-            type="text"
+            type="password"
             name="password"
             value={this.props.password}
           />
