@@ -1,7 +1,7 @@
 import React from 'react';
 
 class LoginPage extends React.Component {
-  onButtonClick = e => {
+  onLoginClick = e => {
     if (
       this.props.username === this.props.user &&
       this.props.password === this.props.pass
@@ -10,8 +10,6 @@ class LoginPage extends React.Component {
       const password = JSON.stringify(this.props.pass);
       localStorage.setItem('username', username);
       localStorage.setItem('password', password);
-
-      this.forceUpdate(() => <LoginPage />);
     }
   };
 
@@ -33,7 +31,7 @@ class LoginPage extends React.Component {
             name="password"
             value={this.props.password}
           />
-          <button onClick={this.onButtonClick}>Login</button>
+          <button onClick={this.onLoginClick}>Login</button>
         </form>
       </div>
     );
