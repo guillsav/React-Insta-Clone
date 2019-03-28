@@ -38,7 +38,6 @@ export default class App extends Component {
       [e.target.name]: e.target.value
     });
 
-    //Find post that contains the username from the search input
     if (e.target.name === 'search') {
       this.setState({
         filteredData: this.state.dummyData.filter(data => {

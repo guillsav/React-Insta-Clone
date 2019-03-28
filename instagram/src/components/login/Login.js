@@ -1,7 +1,7 @@
 import React from 'react';
 
-class Login extends React.Component {
-  onButtonClick = () => {
+class LoginPage extends React.Component {
+  onButtonClick = e => {
     if (
       this.props.username === this.props.user &&
       this.props.password === this.props.pass
@@ -10,30 +10,34 @@ class Login extends React.Component {
       const password = JSON.stringify(this.props.pass);
       localStorage.setItem('username', username);
       localStorage.setItem('password', password);
+
+      this.forceUpdate(() => <LoginPage />);
     }
   };
 
   render() {
     return (
       <div className="Login">
-        <input
-          onChange={this.props.onChange}
-          required
-          type="text"
-          name="username"
-          value={this.props.username}
-        />
-        <input
-          onChange={this.props.onChange}
-          required
-          type="text"
-          name="password"
-          value={this.props.password}
-        />
-        <button onClick={this.onButtonClick}>Login</button>
+        <form>
+          <input
+            onChange={this.props.onChange}
+            required
+            type="text"
+            name="username"
+            value={this.props.username}
+          />
+          <input
+            onChange={this.props.onChange}
+            required
+            type="text"
+            name="password"
+            value={this.props.password}
+          />
+          <button onClick={this.onButtonClick}>Login</button>
+        </form>
       </div>
     );
   }
 }
 
-export default Login;
+export default LoginPage;

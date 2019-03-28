@@ -21,7 +21,7 @@ const withAuthenticate = FirstComponent => SecondComponent =>
     }
 
     render() {
-      if (this.state.isAuthenticated === true) {
+      if (this.state.isAuthenticated) {
         return (
           <FirstComponent
             dummyData={this.props.state.dummyData}
@@ -30,6 +30,7 @@ const withAuthenticate = FirstComponent => SecondComponent =>
             filteredData={this.props.state.filteredData}
             onChange={this.props.onChange}
             onSubmit={this.props.onSubmit}
+            isAuthenticated={this.state.isAuthenticated}
           />
         );
       } else {
