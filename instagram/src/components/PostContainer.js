@@ -1,5 +1,5 @@
 import React from 'react';
-import './Postcontainer.css';
+import styled from 'styled-components';
 
 import CommentSection from './CommentSection';
 import heart from '../assets/heart.png';
@@ -8,6 +8,78 @@ import comment from '../assets/comment.png';
 import send from '../assets/send.png';
 
 import PropTypes from 'prop-types';
+
+const PostContainerWrapper = styled.div`
+  width: 1010px;
+  margin: 40px auto;
+`;
+
+const Post = styled.div`
+  width: 642px;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  background: #fff;
+  margin: auto;
+`;
+
+const PostHeader = styled.div`
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+`;
+
+const ThumbnailPost = styled.img`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 16px;
+`;
+
+const PostH6 = styled.h6`
+  font-size: 0.9rem;
+  color: #262626;
+  margin: 0;
+  font-weight: 600;
+  margin-top: -2px;
+`;
+
+const UIControls = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  width: 130px;
+  padding: 10px 10px;
+  margin-bottom: -18px;
+`;
+
+const UIControlButton = styled.button`
+  border: 0;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+`;
+
+const UiConBtnImg = styled.img`
+${props => (props.alt === 'likes' ? 'width: 24px;' : null)}
+${props => (props.alt === 'comments' ? 'width: 22px;' : null)}
+${props => (props.alt === 'send' ? {width: '19px', margin: '5px'} : null)}
+
+`;
+
+const NumberOfLikes = styled.p`
+  color: #262626;
+  font-weight: 600;
+  font-size: 1rem;
+  background: transparent;
+  border: 0;
+  font-stretch: 100%;
+  margin: 20px 0px 0px 20px;
+  font-variant-numeric: tabular-nums;
+`;
 
 class PostContainer extends React.Component {
   constructor(props) {
@@ -29,35 +101,36 @@ class PostContainer extends React.Component {
   };
   render() {
     return (
-      <div className="PostContainer">
-        <div className="container post">
-          <div className="post-header">
-            <div className="thumbnail">
-              <img src={this.props.thumbnail} alt="thumbnail" />
+      <PostContainerWrapper>
+        <Post>
+          <PostHeader>
+            <div>
+              <ThumbnailPost src={this.props.thumbnail} alt="thumbnail" />
             </div>
-            <h6>{this.props.username}</h6>
-          </div>
-          <div className="post-image">
+            <PostH6>{this.props.username}</PostH6>
+          </PostHeader>
+          <div>
             <img src={this.props.img} alt="" />
           </div>
-          <div className="ui-controls">
-            <button onClick={this.onButtonClick}>
-              <img
+          <UIControls>
+            <UIControlButton
+              onClick={() => setTimeout(() => this.onButtonClick(), 300)}
+            >
+              <UiConBtnImg
                 src={`${
                   this.props.likes === this.state.likes ? heart : heart_on
                 }`}
-                alt=""
-                className="heart"
+                alt="likes"
               />
-            </button>
-            <button>
-              <img src={comment} alt="" className="comment" />
-            </button>
-            <button>
-              <img src={send} alt="" className="send" />
-            </button>
-          </div>
-          <p className="likes">{this.state.likes} likes</p>
+            </UIControlButton>
+            <UIControlButton>
+              <UiConBtnImg src={comment} alt="comments" />
+            </UIControlButton>
+            <UIControlButton>
+              <UiConBtnImg src={send} alt="send" />
+            </UIControlButton>
+          </UIControls>
+          <NumberOfLikes>{this.state.likes} likes</NumberOfLikes>
           <CommentSection
             comments={this.props.comments}
             date={this.props.date}
@@ -66,8 +139,8 @@ class PostContainer extends React.Component {
             id={this.props.id}
             text={this.props.text}
           />
-        </div>
-      </div>
+        </Post>
+      </PostContainerWrapper>
     );
   }
 }

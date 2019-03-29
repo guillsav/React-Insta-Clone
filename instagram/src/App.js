@@ -1,21 +1,31 @@
 import React, {Component} from 'react';
-import './App.css';
-import PropTypes from 'prop-types';
-import Loader from 'react-loader-spinner';
 import moment from 'moment';
+import styled from 'styled-components';
 
 import dummyData from './dummy-data';
-import Header from './components/Header';
-import PostContainer from './components/PostContainer';
+import withAuthenticate from './authentification/withAuthenticate';
+import PostPage from './components/PostPage';
+import LoginPage from './components/login/Login';
 
-class App extends Component {
+const AppWrapper = styled.div`
+  width: 100%;
+  margin: 0 auto;
+`;
+
+const ComponentFromWithAuthenticate = withAuthenticate(PostPage)(LoginPage);
+
+export default class App extends Component {
   constructor() {
     super();
     this.state = {
       dummyData: [],
       search: '',
       text: '',
-      filteredData: []
+      filteredData: [],
+      username: '',
+      password: '',
+      user: 'guillaume',
+      pass: '123'
     };
   }
 
@@ -33,7 +43,6 @@ class App extends Component {
       [e.target.name]: e.target.value
     });
 
-    //Find post that contains the username from the search input
     if (e.target.name === 'search') {
       this.setState({
         filteredData: this.state.dummyData.filter(data => {
@@ -42,7 +51,6 @@ class App extends Component {
       });
     }
   };
-
   handleAddComment = (e, id) => {
     e.preventDefault();
 
@@ -54,76 +62,30 @@ class App extends Component {
         .startOf('hour')
         .fromNow()
     };
-
-    this.setState({
-      filteredData: this.state.filteredData.map(data => {
-        if (data.id === id) {
-          return {...data, comments: [...data.comments, newComment]};
-        }
-        return data;
-      }),
-      text: ''
-    });
+    setTimeout(() => {
+      this.setState({
+        filteredData: this.state.filteredData.map(data => {
+          if (data.id === id) {
+            const commentsToJSON = JSON.stringify(newComment);
+            localStorage.setItem('newComment', commentsToJSON);
+            return {...data, comments: [...data.comments, newComment]};
+          }
+          return data;
+        }),
+        text: ''
+      });
+    }, 600);
   };
 
   render() {
-    console.log(this.state.filteredData);
     return (
-      <div className="App">
-        <Header
+      <AppWrapper>
+        <ComponentFromWithAuthenticate
+          state={this.state}
           onChange={this.onInputChange}
-          onSubmit={this.onSearchFormSubmit}
+          onSubmit={this.handleAddComment}
         />
-        {this.state.dummyData.length === 0 ? (
-          <div className="spinner">
-            <Loader type="Oval" color="#2626265c" height="60" width="60" />
-          </div>
-        ) : (
-          this.state.filteredData.map(data => {
-            return (
-              <PostContainer
-                key={data.id}
-                id={data.id}
-                img={data.imageUrl}
-                username={data.username}
-                date={data.timestamp}
-                likes={data.likes}
-                comments={data.comments}
-                thumbnail={data.thumbnailUrl}
-                onChange={this.onInputChange}
-                onSubmit={this.handleAddComment}
-                text={this.state.text}
-              />
-            );
-          })
-        )}
-      </div>
+      </AppWrapper>
     );
   }
 }
-
-Header.propTypes = {
-  onChange: PropTypes.func
-};
-
-PostContainer.propTypes = {
-  dummyData: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      imageUrl: PropTypes.string,
-      likes: PropTypes.number,
-      thumbnailUrl: PropTypes.string,
-      timestamp: PropTypes.string,
-      username: PropTypes.string,
-      comments: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.string,
-          text: PropTypes.string,
-          username: PropTypes.string
-        })
-      )
-    })
-  )
-};
-
-export default App;
