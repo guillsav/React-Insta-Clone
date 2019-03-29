@@ -35,11 +35,6 @@ export default class App extends Component {
         dummyData,
         filteredData: Array.from(dummyData)
       });
-      const comments = this.state.filteredData.map(data => data.comments);
-      const commentsToJSON = JSON.stringify(comments);
-      if (comments) {
-        localStorage.setItem('comments', commentsToJSON);
-      }
     }, 2500);
   }
 
@@ -71,6 +66,8 @@ export default class App extends Component {
       this.setState({
         filteredData: this.state.filteredData.map(data => {
           if (data.id === id) {
+            const commentsToJSON = JSON.stringify(newComment);
+            localStorage.setItem('newComment', commentsToJSON);
             return {...data, comments: [...data.comments, newComment]};
           }
           return data;

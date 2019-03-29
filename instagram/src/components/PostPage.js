@@ -1,24 +1,33 @@
 import React from 'react';
-import './PostPage.css';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
+import styled from 'styled-components';
 
 import Header from './Header';
 import PostContainer from './PostContainer';
 
+const PostPageDiv = styled.div`
+  width: 100%;
+`;
+
+const Spinner = styled.div`
+  margin-top: 200px;
+  text-align: center;
+`;
+
 export default class PostPage extends React.Component {
   render() {
     return (
-      <div className="PostPage">
+      <PostPageDiv>
         <Header
           onChange={this.props.onChange}
           onSubmit={this.onSearchFormSubmit}
           search={this.props.search}
         />
         {this.props.dummyData.length === 0 ? (
-          <div className="spinner">
+          <Spinner>
             <Loader type="Oval" color="#262626" height="60" width="60" />
-          </div>
+          </Spinner>
         ) : (
           this.props.filteredData.map(data => {
             return (
@@ -38,7 +47,7 @@ export default class PostPage extends React.Component {
             );
           })
         )}
-      </div>
+      </PostPageDiv>
     );
   }
 }
